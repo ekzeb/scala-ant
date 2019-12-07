@@ -3,7 +3,7 @@ organization := "com.sandinh"
 
 name := "scala-ant"
 
-version := "2.13.1-SNAPSHOT"
+version := "2.13.1"
 
 scalaVersion := "2.13.1"
 
