@@ -47,7 +47,9 @@ object Compilers extends scala.collection.Map[String, Compiler] {
   private def freeMemoryString: String =
     (Runtime.getRuntime.freeMemory/1048576.0).formatted("%10.2f") + " MB"
 
+  // These two methods are not in MapOps so that MapView is not forced to implement them
+  @deprecated("Use -- or removedAll on an immutable Map", "2.13.0")
   def -(key1: String, key2: String, keys: String*): scala.collection.Map[String,scala.tools.ant.sabbus.Compiler] = ???
-
+  @deprecated("Use - or removed on an immutable Map", "2.13.0")
   def -(key: String): scala.collection.Map[String,scala.tools.ant.sabbus.Compiler] = ???
 }

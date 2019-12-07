@@ -20,10 +20,9 @@ import org.apache.tools.ant.types.{Path, Reference}
 import org.apache.tools.ant.util.{FileUtils, GlobPatternMapper, SourceFileScanner}
 import org.apache.tools.ant.util.facade.{FacadeTaskHelper, ImplementationSpecificArgument}
 
-import scala.tools.nsc.reporters.Reporter
 import scala.tools.nsc.{Global, Settings, CompilerCommand}
 import scala.tools.nsc.io.{Path => SPath}
-import scala.tools.nsc.reporters.ConsoleReporter
+import scala.tools.nsc.reporters.{Reporter, ConsoleReporter}
 
 /** An Ant task to compile with the new Scala compiler (NSC).
  *
@@ -86,12 +85,12 @@ class Scalac extends ScalaMatchingTask with ScalacShared {
 
   /** Defines valid values for the logging property. */
   object LoggingLevel extends PermissibleValue {
-    val values: List[String] = List("none", "verbose", "debug")
+    val values = List("none", "verbose", "debug")
   }
 
   /** Defines valid values for properties that refer to compiler phases. */
   object CompilerPhase extends PermissibleValue {
-    val values: List[String] = List("namer", "typer", "pickler", "refchecks",
+    val values = List("namer", "typer", "pickler", "refchecks",
                       "uncurry", "tailcalls", "specialize", "explicitouter",
                       "erasure", "fields", "lambdalift", "constructors",
                       "flatten", "mixin", "delambdafy", "cleanup",
@@ -100,12 +99,12 @@ class Scalac extends ScalaMatchingTask with ScalacShared {
 
   /** Defines valid values for the `target` property. */
   object Target extends PermissibleValue {
-    val values: List[String] = List("8", "9", "10", "11", "12")
+    val values = List("8", "9", "10", "11", "12")
   }
 
   /** Defines valid values for the `deprecation` and `unchecked` properties. */
   object Flag extends PermissibleValue {
-    val values: List[String] = List("yes", "no", "on", "off", "true", "false")
+    val values = List("yes", "no", "on", "off", "true", "false")
     def toBoolean(flag: String): Option[Boolean] =
       if (flag == "yes" || flag == "on" || flag == "true") Some(true)
       else if (flag == "no" || flag == "off" || flag == "false") Some(false)

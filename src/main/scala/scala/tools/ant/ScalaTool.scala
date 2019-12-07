@@ -46,7 +46,7 @@ class ScalaTool extends ScalaMatchingTask {
 
   /** Defines valid values for the platforms property. */
   object Platforms extends PermissibleValue {
-    val values: List[String] = List("unix", "windows")
+    val values = List("unix", "windows")
   }
 
   /** The path to the exec script file. `".bat"` will be appended for the

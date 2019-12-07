@@ -77,10 +77,10 @@ class Scaladoc extends ScalaMatchingTask {
    *  `unchecked` properties.
    */
   object Flag extends PermissibleValue {
-    val values: List[String] = List("yes", "no", "on", "off")
+    val values = List("yes", "no", "on", "off")
     def getBooleanValue(value: String, flagName: String): Boolean =
       if (Flag.isPermissible(value))
-        "yes".equals(value) || "on".equals(value)
+        ("yes".equals(value) || "on".equals(value))
       else
         buildError("Unknown " + flagName + " flag '" + value + "'")
   }

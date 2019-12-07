@@ -96,8 +96,8 @@ import org.apache.tools.ant.types.Mapper
 
   /** Tests if all mandatory attributes are set and valid. */
   private def validateAttributes(): Unit = {
-    if (origin.isEmpty) sys.error("Mandatory attribute 'dir' is not set.")
-    if (destination.isEmpty) sys.error("Mandatory attribute 'todir' is not set.")
+    if (origin.isEmpty) throw new IllegalStateException("Mandatory attribute 'dir' is not set.")
+    if (destination.isEmpty) throw new IllegalStateException("Mandatory attribute 'todir' is not set.")
   }
 
   private def reportDiff(f1: File, f2: File): Unit = {
@@ -156,7 +156,7 @@ import org.apache.tools.ant.types.Mapper
     }
     if (!allEqualNow)
       if (failing)
-        sys.error("There were differences between '" + origin.get + "' and '" + destination.get + "'")
+        throw new IllegalStateException("There were differences between '" + origin.get + "' and '" + destination.get + "'")
       else
         log("There were differences between '" + origin.get + "' and '" + destination.get + "'")
     else {

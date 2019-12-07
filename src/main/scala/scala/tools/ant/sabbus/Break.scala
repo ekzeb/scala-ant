@@ -24,7 +24,7 @@ class Break extends Task {
   private var id: Option[String] = None
 
   override def execute(): Unit = {
-    if (id.isEmpty) sys.error("Attribute 'id' is not set")
+    if (id.isEmpty) throw new IllegalStateException("Attribute 'id' is not set")
     Compilers.break(id.get)
   }
 

@@ -43,7 +43,7 @@ class Pack200Task extends ScalaMatchingTask {
   var keepFileOrder = false
   var keepModificationTime = false
   var repack = false
-  var segmentLimit: Int = -1
+  var segmentLimit = -1
 
   var packFileSuffix = ".pack"
 
