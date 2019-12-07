@@ -1,34 +1,15 @@
+//https://github.com/xerial/sbt-sonatype#project-rootsonatypesbt
+
 publishMavenStyle := true
 
-publishTo in Global := Some(
-  if (isSnapshot.value)
-    Opts.resolver.sonatypeSnapshots
-  else
-    Opts.resolver.sonatypeStaging
-)
+publishTo in Global := sonatypePublishToBundle.value
 
-pomExtra in Global := <url>https://github.com/sandinh/scala-ant</url>
-  <licenses>
-    <license>
-      <name>Apache 2</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-  <scm>
-    <url>https://github.com/sandinh/scala-ant</url>
-    <connection>scm:git:git@github.com:sandinh/scala-ant.git</connection>
-  </scm>
-  <developers>
-    <developer>
-      <id>cigaly</id>
-      <organizationUrl>https://github.com/cigaly</organizationUrl>
-    </developer>
-    <developer>
-      <id>giabao</id>
-      <name>Bùi Việt Thành</name>
-      <email>thanhbv@sandinh.net</email>
-      <organization>Sân Đình</organization>
-      <organizationUrl>https://sandinh.com</organizationUrl>
-    </developer>
-  </developers>
+licenses := Seq("Apache 2" -> url("http://www.apache.org/licenses/LICENSE-2.0"))
+
+import xerial.sbt.Sonatype._
+sonatypeProjectHosting := Some(GitHubHosting("sandinh", "scala-ant", "thanhbv@sandinh.net"))
+
+developers := List(
+  Developer("cigaly", "Gabriel Birke", "gb@birke-software.de", url("http://birke-software.de")),
+  Developer("giabao", "Bùi Việt Thành", "thanhbv@sandinh.net", url("https://sandinh.com")),
+)
