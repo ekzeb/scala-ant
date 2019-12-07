@@ -15,8 +15,10 @@ dependencies {
   scalaAnt 'com.sandinh:scala-ant_2.13:2.13.1'
 }
 scaladoc {
-  scalaClasspath = scalaRuntime.inferScalaClasspath(configurations.compile) +
-            layout.files(configurations.scalaAnt)
-  // or simple: scalaClasspath = configurations.scalaAnt
+  scalaClasspath += scalaVersion.startsWith("2.13.")?
+            configurations.scalaAnt :
+            layout.files()
+// or you can detect scalaVersion by:
+//  scalaRuntime.getScalaVersion(scalaRuntime.findScalaJar(scalaClasspath, "library"))
 }
 ```
