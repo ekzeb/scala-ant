@@ -13,8 +13,9 @@
 package scala.tools.ant
 
 import java.io.{BufferedOutputStream, File, FileOutputStream}
-import java.util.jar.{JarFile, JarOutputStream, Pack200}
-import java.util.jar.Pack200.Packer._
+import java.util.jar.{JarFile, JarOutputStream}
+import org.apache.commons.compress.java.util.jar.Pack200.Packer._
+import org.apache.commons.compress.java.util.jar.Pack200
 
 /** An [[http://ant.apache.org Ant]] task that applies the pack200 encoding
  *  to a JAR file.
